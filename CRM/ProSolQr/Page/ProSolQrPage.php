@@ -12,7 +12,6 @@ class CRM_ProSolQr_Page_ProSolQrPage extends CRM_Core_Page {
     $contactId = $_GET['cid'];
     $url = CRM_Utils_System::url('civicrm/contact/view', "reset=1&cid=$contactId", TRUE);
     $options = new QROptions([
-      'version' => 5,
       'outputType' => QRCode::OUTPUT_IMAGE_PNG,
       'eccLevel' => QRCode::ECC_L
     ]);
