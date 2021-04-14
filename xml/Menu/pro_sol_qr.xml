@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/contact/view/qr</path>
+    <page_callback>CRM_ProSolQr_Page_ProSolQrPage</page_callback>
+    <title>ProSolQrPage</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
