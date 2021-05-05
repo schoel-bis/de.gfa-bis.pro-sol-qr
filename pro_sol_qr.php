@@ -179,7 +179,7 @@ function pro_sol_qr_civicrm_tabset($tabsetName, &$tabs, $context) {
   }
 
   $contactId = $context['contact_id'];
-  $url = CRM_Utils_System::url('civicrm/contact/view/participant', "reset=1&action=add&context=participant&cid=$contactId");
+  $url = CRM_Utils_System::url('civicrm/contact/view/qr', "reset=1&cid=$contactId");
   $tabs[] = array(
     'id' => 'pro_sol_qr_tab',
     'url' => $url,
