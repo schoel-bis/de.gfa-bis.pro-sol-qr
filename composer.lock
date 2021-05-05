@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92185417e5783218d702266800e7ef51",
+    "content-hash": "e0028656b355389d2aff60386255d921",
     "packages": [
         {
             "name": "chillerlan/php-qrcode",
@@ -67,6 +67,10 @@
                 "qrcode",
                 "qrcode-generator"
             ],
+            "support": {
+                "issues": "https://github.com/chillerlan/php-qrcode/issues",
+                "source": "https://github.com/chillerlan/php-qrcode/tree/3.4.0"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4",
@@ -125,6 +129,10 @@
                 "container",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/chillerlan/php-settings-container/issues",
+                "source": "https://github.com/chillerlan/php-settings-container"
+            },
             "time": "2019-09-10T00:09:44+00:00"
         }
     ],
@@ -138,5 +146,5 @@
         "php": "^7.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

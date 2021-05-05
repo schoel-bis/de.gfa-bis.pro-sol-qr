@@ -1,6 +1,8 @@
 <?php
 
 require_once 'pro_sol_qr.civix.php';
+require_once 'pro_sol_qr_generate_qr_code.php';
+
 // phpcs:disable
 use CRM_ProSolQr_ExtensionUtil as E;
 // phpcs:enable
@@ -177,7 +179,7 @@ function pro_sol_qr_civicrm_tabset($tabsetName, &$tabs, $context) {
   }
 
   $contactId = $context['contact_id'];
-  $url = CRM_Utils_System::url('civicrm/contact/view/qr', "reset=1&cid=$contactId");
+  $url = CRM_Utils_System::url('civicrm/contact/view/participant', "reset=1&action=add&context=participant&cid=$contactId");
   $tabs[] = array(
     'id' => 'pro_sol_qr_tab',
     'url' => $url,
@@ -185,4 +187,31 @@ function pro_sol_qr_civicrm_tabset($tabsetName, &$tabs, $context) {
     'weight' => 10000,
     'icon' => 'crm-i fa-qrcode'
   );
+}
+
+function pro_sol_qr_civicrm_tokens(&$tokens) {
+  if (!isset($tokens['contact'])) {
+    $tokens['contact'] = array();
+  }
+
+  $tokens['contact']['contact.qr_code'] = t('QR Code linking to the contact in CiviCRM');
+  $tokens['contact']['contact.qr_code_url'] = t('QR Code linking to the contact in CiviCRM (“data:…” URL)');
+}
+
+function pro_sol_qr_civicrm_tokenValues(&$values, $cids, $job = null, $tokens = [], $context = null) {
+  if (!(
+    isset($tokens['contact'])
+    && (
+      array_key_exists('qr_code', $tokens['contact']) || in_array('qr_code', $tokens['contact'])
+      || array_key_exists('qr_code_url', $tokens['contact']) || in_array('qr_code_url', $tokens['contact'])
+    )
+  )) {
+    return;
+  }
+
+  foreach ($cids as $cid) {
+    $url = pro_sol_qr_generate_qr_code($cid);
+    $values[$cid]['contact.qr_code_url'] = $url;
+    $values[$cid]['contact.qr_code'] = '<img src="'.$url.'" />';
+  }
 }
